@@ -2587,7 +2587,7 @@ table span.badge {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px; 
-  background-color: #eceff1;
+  background-color: #fafafa;
 }
   .row:after {
     content: "";
