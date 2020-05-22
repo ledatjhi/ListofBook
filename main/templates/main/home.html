@@ -6,7 +6,7 @@
     <!-- Compiled and minified CSS -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" href="{% static "main/css/materialize.css" %}">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript for Materialize CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -33,17 +33,17 @@
             <div class="row" style="margin-bottom: 0em;">
                 <div class="input-field col s6">
                     <input id="title" type="text" class="validate">
-                    <label for="title">Search by Title</label>
+                    <label for="title">Search Book by Title</label>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action" style="top: 2em;">Search
+                <button class="btn waves-effect waves-light" type="submit" name="action" style="top: 1.5em;">Search
                 </button>
             </div>
             <div class="row" style="margin-bottom: 0em;">
                 <div class="input-field col s6">
                     <input id="type" type="text" class="validate">
-                    <label for="type">Search by Type</label>
+                    <label for="type">Search Book by Type</label>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action" style="top: 2em;">Search
+                <button class="btn waves-effect waves-light" type="submit" name="action" style="top: 1.5em;">Search
                 </button>
                 </div>
             </form> 
@@ -73,9 +73,37 @@
                 {% endfor %}
             </tbody>
             </table>
+            {% if books.has_other_pages %}
+            <ul class="pagination" style="text-align: center">
+                {% if books.has_previous %}
+                <!-- <li><a href="?page={{ books.previous_page_number }}">&laquo;</a></li> -->
+                <li class="waves-effect"><a href="?page={{ books.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                {% else %}
+                <!-- <li class="disabled"><span>&laquo;</span></li> -->
+                <li class="disabled"><a ><i class="material-icons">chevron_left</i></a></li>
+                {% endif %}
+                {% for i in books.paginator.page_range %}
+                {% if books.number == i %}
+                    <!-- <li class="active"><span></span>{{ i }} </span></li> -->
+                    <li class="active teal lighten-2"><a >{{ i }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if books.has_next %}
+                <li class="waves-effect"><a href="?page={{ books.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                <!-- <li><a href="?page={{ books.next_page_number }}">&raquo;</a></li> -->
+                {% else %}
+                <!-- <li class="disabled"><span>&raquo;</span></li> -->
+                <li class="disabled"><a ><i class="material-icons">chevron_right</i></a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
         </div>
         <br>
     </div>
 </body>
+        
+
 
 <!-- <script src="{% static 'tinymce/js/prism.js' %}"></script> -->
