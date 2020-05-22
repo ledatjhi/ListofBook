@@ -1,0 +1,75 @@
+
+<head>
+    {% load static %}
+    <!-- Prism CSS -->
+    <!-- <link href="{% static 'main/css/prism.css' %}" rel="stylesheet"> -->
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="{% static "main/css/materialize.css" %}">
+
+    <!-- Compiled and minified JavaScript for Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+
+<body>
+    <br>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper teal lighten-2">
+
+            <a href="#" class="brand-logo center">Books</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="admin/">Admin</a></li>
+            </ul>
+            </div>
+        </nav>
+        <br>
+        <div class="col s12 teal lighten-2 ">
+            <p class="z-depth-3">Filter</p>
+        </div>
+        <div class="row">
+            <form class="col s12"></form>
+                <div class="input-field col s6">
+                    <input id="title" type="text" class="validate">
+                    <label for="title">Search by Title</label>
+                </div>
+                </div>
+                <div class="row">
+                <div class="input-field col s6">
+                    <input id="type" type="text" class="validate">
+                    <label for="type">Search by Type</label>
+                </div>
+            </form> 
+        </div>
+    
+        <div class = "row">
+            <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Date Published</th>
+                    <th>Number of Pages</th>
+                    <th>Type of Book</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {% for book in books %} 
+                    <tr>
+                        <td>{{book.book_title}}</td>
+                        <td>{{book.book_author}}</td>
+                        <td>{{book.book_published}}</td>
+                        <td>{{book.book_pages}}</td>
+                        <td>{{book.book_type}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <br>
+    </div>
+</body>
+
+<!-- <script src="{% static 'tinymce/js/prism.js' %}"></script> -->
