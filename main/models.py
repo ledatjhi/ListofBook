@@ -10,6 +10,4 @@ class Book(models.Model):
     book_type = models.CharField(max_length=100)
     book_picturename = models.CharField(max_length=200, default='')
 
-    # def __str__(self):
-    #     return self.book_title
 
